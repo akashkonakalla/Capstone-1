@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated CI/CD Deployment - Success!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Green */
+            --secondary-color: #2196F3; /* Blue */
+            --background-gradient-start: #e0f2f7;
+            --background-gradient-end: #cbe6ef;
+            --text-color: #333;
+            --light-text-color: #666;
+            --card-background: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: var(--card-background);
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-medium);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--secondary-color) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0.1;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--primary-color) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0.1;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+            margin-bottom: 25px;
+        }
+
+        .success-icon {
+            font-size: 5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            animation: pulse 2s infinite ease-in-out;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #1a6fb2; /* Darker blue */
+            box-shadow: 0 8px 20px var(--shadow-medium);
+            transform: translateY(-2px);
+            animation: none; /* Stop pulse on hover */
+        }
+        
+        /* Dashboard Styles */
+        #dashboard-view {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+        }
+
+        .metric-value.success { color: var(--primary-color); }
+        .metric-value.info { color: var(--secondary-color); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px var(--shadow-light); }
+            50% { transform: scale(1.02); box-shadow: 0 8px 20px var(--shadow-medium); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px var(--shadow-light); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .success-icon {
+                font-size: 4em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Initial Success View -->
+        <div id="success-view">
+            <div class="success-icon">&#x2713;</div>
+            <h1>Project Deployed Successfully!</h1>
+            <h2>Automated Software Deployment System with Integrated Testing Pipelines</h2>
+            <p>This page demonstrates the power and efficiency of our robust CI/CD pipeline. Your changes have been automatically tested and seamlessly delivered to production.</p>
+            <p>Embrace continuous integration and continuous delivery for faster, more reliable software releases.</p>
+        </div>
+
+        <!-- Hidden Dashboard View -->
+        <div id="dashboard-view" style="display:none;">
+            <h2>CI/CD Pipeline Dashboard</h2>
+            <p>Live metrics from the deployment pipeline.</p>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value success">26</div>
+                    <div class="metric-label">Builds Today</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value success">99.8%</div>
+                    <div class="metric-label">Success Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value info">4m 32s</div>
+                    <div class="metric-label">Avg. Deploy Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value success">4/4</div>
+                    <div class="metric-label">Active Servers</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button class="cta-button" id="toggle-btn" onclick="toggleView()">Explore Dashboard</button>
+    </div>
+
+    <script>
+        function toggleView() {
+            const successView = document.getElementById('success-view');
+            const dashboardView = document.getElementById('dashboard-view');
+            const toggleBtn = document.getElementById('toggle-btn');
+
+            if (dashboardView.style.display === 'none') {
+                // Show Dashboard
+                successView.style.display = 'none';
+                dashboardView.style.display = 'block';
+                toggleBtn.textContent = '« Back to Status';
+            } else {
+                // Show Success Message
+                successView.style.display = 'block';
+                dashboardView.style.display = 'none';
+                toggleBtn.textContent = 'Explore Dashboard';
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,5 +1,4 @@
 #!/bin/bash
-# Automated deployment script for capstone-prototype
 
 APP_NAME="capstone-prototype"
 CONTAINER_NAME="capstone"
